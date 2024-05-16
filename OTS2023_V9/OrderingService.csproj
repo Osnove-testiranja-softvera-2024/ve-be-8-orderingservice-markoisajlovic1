@@ -49,6 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidCouponException.cs" />
+    <Compile Include="Fakes\CouponServiceFake.cs" />
+    <Compile Include="Fakes\CouponServiceFakeException.cs" />
+    <Compile Include="Fakes\LoggerServiceFake.cs" />
+    <Compile Include="Fakes\OrderServiceFake.cs" />
     <Compile Include="Models\Coupon.cs" />
     <Compile Include="Services\CalculationService.cs" />
     <Compile Include="Services\CouponService.cs" />

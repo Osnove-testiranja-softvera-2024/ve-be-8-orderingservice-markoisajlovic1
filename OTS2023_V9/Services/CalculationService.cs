@@ -10,6 +10,15 @@ namespace OTS2023_V9.Services
         private IOrderService orderService;
         private ICouponService couponService;
         private ILoggerService loggerService;
+
+        public CalculationService(IOrderService orderService, ICouponService couponService, ILoggerService loggerService)
+        {
+            this.loggerService = loggerService;
+            this.couponService = couponService;
+            this.orderService = orderService;
+        }
+
+
         public bool CheckCouponValidity(Guid orderId, Guid couponId)
         {
             Order order = orderService.GetOrderById(orderId);
@@ -40,7 +49,7 @@ namespace OTS2023_V9.Services
                 couponService.UseCoupon(coupon.Id);
                 orderService.UpdateTotal(-coupon.Amount);
             }
-            catch(InvalidCouponException  ex)
+            catch(InvalidCouponException ex)
             {
                 loggerService.LogError("[CouponInvalidException] " + ex.Message);
             }
